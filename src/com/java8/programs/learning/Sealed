@@ -1,0 +1,21 @@
+Features of Sealed Classes:
+It helps creating a finite set of classes in inheritance.
+Sealed classes specify which classes can extend them, providing a clear hierarchy.
+They ensure that only permitted sub-classes are created, avoiding unexpected behavior.
+Useful for creating frameworks, allows developers to dictate which classes users can extend.
+Especially beneficial in large projects, it prevents unintentional changes to important classes.
+Benefits of Sealed Classes:
+Sealed Classes provide several benefits, including:
+
+Enhanced Security: With Sealed Classes, developers can restrict the inheritance hierarchy of a class or interface, preventing unauthorized access to sensitive code.
+Better Maintainability: By restricting the inheritance hierarchy, Sealed Classes promote code maintainability by making it easier to understand and modify the code-base.
+Improved Performance: Sealed Classes enable the JVM to make more optimizations at runtime, leading to improved performance.
+
+
+Important points on Sealed classes:
+Sealed class must specify it’s permitted sub-class using permits clause.
+Sealed class must have sub-classes.
+Only the listed sub-classes are allowed to extend the sealed class.
+Permitted sub-classes must be in same package.
+Permitted sub-classes should extends their sealed super class directly.
+Permitted sub-classes should extends their sealed super class directly.
