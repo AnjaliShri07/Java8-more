@@ -49,9 +49,9 @@ public class ConvertLisIntoMap {
 
         noteLst.add(new Notes(6, "note4", 66));
 
-        Map<String, Long> notesRecords = noteLst.stream()
+        Map<String, Integer> notesRecords = noteLst.stream()
                 .sorted(Comparator
-                        .comparingLong(Notes::getTagId)
+                        .comparingInt(Notes::getTagId)
                         .reversed()) // sorting is based on TagId 55,44,33,22,11
                 .collect(Collectors.toMap
                         (Notes::getTagName, Notes::getTagId,
