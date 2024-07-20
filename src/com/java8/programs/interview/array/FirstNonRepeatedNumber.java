@@ -40,6 +40,7 @@ public class FirstNonRepeatedNumber {
     public static void main(String[] args) {
         int[] numbersArray = {1, 2, 3, 1, 2, 4, 3, 5};
 
+
         /*// Step 1: Convert the array to a stream and create a map to count occurrences
         Map<Integer, Long> countMap = Arrays.stream(numbersArray)
                 .boxed()
