@@ -22,7 +22,11 @@ public class ReverseIntArray {
                 .map(i -> numbers[numbers.length - 1 - i])
                 .toArray();
 
+        int[] reverseSort = Arrays.stream(numbers)
+                .boxed().sorted(Collections.reverseOrder()).mapToInt(Integer :: intValue).toArray();
+
         System.out.println("Reversed Array: " + Arrays.toString(reversedArray));
         System.out.println("Using IntStream : "+ Arrays.toString(reversed));
+        System.out.println("Reverse using Sort: "+ Arrays.toString(reverseSort));
     }
 }

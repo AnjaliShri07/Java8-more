@@ -47,7 +47,7 @@ public class SortUsingDynamicId {
         employees.add(new Employee("Bob", "98765"));
         employees.add(new Employee("Charlie", "54321"));
 
-        int position = 1; // Specify the position of the digit to sort by (1-based index)
+        int position = 2; // Specify the position of the digit to sort by (1-based index)
 
         // Sort employees by the specified digit of empId
         List<Employee> sortedEmployees = employees.stream()

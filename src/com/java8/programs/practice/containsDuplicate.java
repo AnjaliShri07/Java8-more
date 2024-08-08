@@ -7,10 +7,7 @@ public class containsDuplicate {
 
     public static boolean containsDuplicateNumber(List<Integer> myList){
         Set<Integer> set = new HashSet<>(myList);
-        if(set.size() == myList.size())
-            return false;
-        else
-            return true;
+        return set.size() != myList.size();
     }
 
 

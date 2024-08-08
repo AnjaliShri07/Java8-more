@@ -3,6 +3,7 @@ package com.java8.programs.interview.array;
 import java.util.*;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class FirstNonRepeatedNumber {
@@ -18,7 +19,6 @@ public class FirstNonRepeatedNumber {
             else
                 unique.add(number);
         }
-
         return unique.stream()
                 .findFirst()
                 .orElse(-1);
@@ -28,7 +28,7 @@ public class FirstNonRepeatedNumber {
         // Step 1: Convert the array to a stream and create a map to count occurrences
         Map<Integer, Long> countMap = Arrays.stream(numbersArray)
                 .boxed()
-                .collect(Collectors.groupingBy(n -> n, LinkedHashMap::new, Collectors.counting()));
+                .collect(Collectors.groupingBy(Function.identity(), LinkedHashMap::new, Collectors.counting()));
 
         // Step 2: Find the first non-repeated number
          return countMap.entrySet().stream()

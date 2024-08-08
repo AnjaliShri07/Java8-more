@@ -5,10 +5,10 @@ import java.util.regex.Pattern;
 
 public class FirstStringStartWithNumber {
     public static void main(String[] args) {
-        List<String> strings = Arrays.asList("apple", "banana", "1st place", "42 is the answer", "cherry");
+        List<String> stringList = Arrays.asList("apple", "banana", "1st place", "42 is the answer", "cherry");
 
         // Find the first string that starts with a number
-        Optional<String> firstStringWithNumber = strings.stream()
+        Optional<String> firstStringWithNumber = stringList.stream()
                 .filter(s -> Pattern.matches("^[0-9].*", s))
                 .findFirst();
 

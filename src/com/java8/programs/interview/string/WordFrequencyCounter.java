@@ -8,7 +8,7 @@ import java.util.stream.Stream;
 public class WordFrequencyCounter {
     public static Map<String, Long> countWordFrequency(List<String> words) {
         return words.stream()
-                .flatMap(line -> Stream.of(line.split("\\s+")))
+                .flatMap(s -> Stream.of(s.split("\\s+")))
                 .collect(Collectors.groupingBy(n->n, Collectors.counting()));
     }
 
