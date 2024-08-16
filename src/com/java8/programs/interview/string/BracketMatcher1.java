@@ -8,11 +8,9 @@ public class BracketMatcher1 {
 
         for (char ch : str.toCharArray()) {
             if (ch == '(' || ch == '{' || ch == '[') {
-                // If the character is an opening bracket, push it onto the stack
-                stack.push(ch);
+                stack.push(ch);   // If the character is an opening bracket, push it onto the stack
             } else if (ch == ')' || ch == '}' || ch == ']') {
-                // If the character is a closing bracket, check if the stack is empty
-                if (stack.isEmpty()) {
+                if (stack.isEmpty()) {  // If the character is a closing bracket, check if the stack is empty
                     return false; // Unmatched closing bracket
                 }
 
