@@ -15,3 +15,11 @@ public class SortBasedOnFrequency {
                 .toList().forEach(System.out::println);
     }
 }
+/*
+Explanation:
+groupingBy: Group elements and count their occurrences.
+sorted: Sort based on frequency in descending order.
+        flatMap: Replicate each element according to its frequency to preserve the original structure.
+collect: Convert the stream back into a list.
+nCopies: It generates the output based on how often the element appears.
+*/

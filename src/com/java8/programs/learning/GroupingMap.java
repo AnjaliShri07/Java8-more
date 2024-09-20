@@ -58,7 +58,7 @@ public class GroupingMap {
 	        Map<Integer, Set<String>> EmpSalary = employees.stream().collect(Collectors.groupingBy(Employee2::getSalary, Collectors.mapping
                     (Employee2::getName, Collectors.toSet()))); 
 	        System.out.println("*******************************************************************************");
-	        System.out.println("grouped by Salary: " + EmpSalary); 
+	        System.out.println("Employee Grouped by Salary: " + EmpSalary);
 	        
 	        //List<EmployeeGrouping> empList =  employees.sort((EmployeeGrouping e1, EmployeeGrouping e2) -> e1.getName().compareTo(e2.getName()));
 	       

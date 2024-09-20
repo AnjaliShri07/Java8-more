@@ -18,4 +18,3 @@ Sealed class must have sub-classes.
 Only the listed sub-classes are allowed to extend the sealed class.
 Permitted sub-classes must be in same package.
 Permitted sub-classes should extends their sealed super class directly.
-Permitted sub-classes should extends their sealed super class directly.

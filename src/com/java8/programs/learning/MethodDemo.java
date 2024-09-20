@@ -1,7 +1,7 @@
 package com.java8.programs.learning;
 
 interface Interf{
-	public void add(int a, int b);
+	 void add(int a, int b);
 }
 public class MethodDemo {
 	

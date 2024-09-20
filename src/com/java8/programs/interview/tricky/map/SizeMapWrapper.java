@@ -14,29 +14,13 @@ public class SizeMapWrapper {
 
     }
 }
-
-
 /*
 Explanation:
 Creating Integer Objects:
 
-i1 and i2 are both Integer objects with the value 1.
-Even though they are two different objects, they have the same value.
-HashMap Behavior:
+In Java, Integer objects with values between -128 and 127 are cached by the JVM. This means that when you create
+an Integer object within this range using the new keyword, a new object is not created. Instead, the cached
+instance is reused.
 
-HashMap uses the hashCode method to determine the bucket location for each key.
-It uses the equals method to check if an existing key is equal to the new key.
-Integer hashCode and equals Methods:
-
-The hashCode method for Integer returns the value of the Integer itself.
-The equals method for Integer returns true if the values are the same.
-Since both i1 and i2 have the same value, their hashCode values will be identical,
-and the equals method will return true when comparing i1 and i2.
-
-Analysis:
-When map.put(i1, "One") is called, i1 is added to the HashMap.
-When map.put(i2, "One") is called, the HashMap will check if there is already a key with the same hashCode and equals value as i2.
-Since i1 and i2 are equal in terms of hashCode and equals, i2 will replace i1 as the key in the HashMap.
-Output:
-Only one entry will be in the HashMap since i1 and i2 are considered the same key.
-        Therefore, the size of the HashMap will be 1.*/
+In this case, since i1 and i2 both have the value 1, which is within the cached range, they actually refer to the
+same object in memory. This is why the map only contains one entry.*/

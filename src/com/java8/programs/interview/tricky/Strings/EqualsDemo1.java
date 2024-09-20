@@ -7,8 +7,6 @@ public class EqualsDemo1 {
         System.out.println(s1.equals(s2));
     }
 }
-
-
 /*
 equals() is string class method.
 When s1.equals(s2) is called, the equals method of the String class is executed.

@@ -8,14 +8,13 @@ import java.util.stream.Stream;
 public class WordFrequencyCounter {
     public static Map<String, Long> countWordFrequency(List<String> words) {
         return words.stream()
-                .flatMap(s -> Stream.of(s.split("\\s+")))
+                .flatMap(s -> Arrays.stream(s.split("\\s+")))
                 .collect(Collectors.groupingBy(n->n, Collectors.counting()));
     }
 
     public static void main(String[] args) {
         List<String> words = Arrays.asList("apple banana apple", "banana cherry", "apple banana cherry");
-        Map<String, Long> frequencyMap = countWordFrequency(words);
-        System.out.println("Word frequency: " + frequencyMap);
+        System.out.println("Word frequency: " + countWordFrequency(words));
     }
 }
 

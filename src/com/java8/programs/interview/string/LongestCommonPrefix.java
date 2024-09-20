@@ -13,7 +13,6 @@ public class LongestCommonPrefix {
         for (String str : words) {
             // Reduce the prefix until it matches the start of the current string
             while (str.indexOf(prefix) != 0) {
-                System.out.println(prefix.length());
                 prefix = prefix.substring(0, prefix.length() - 1);
                 if (prefix.isEmpty()) {
                     return "";

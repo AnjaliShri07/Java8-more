@@ -15,6 +15,9 @@ public class Student {
         this.marks = marks;
     }
 
+    public Student(String a, int i) {
+    }
+
     @Override
     public String toString() {
         return "Student [RollNo=" + rollNo + ", Name=" + name + ", Marks=" + marks + "]";
