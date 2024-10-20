@@ -6,27 +6,36 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class ReverseStringWihoutAffectingSpecialChar {
+    public static String reverseWithoutAffectingSpecialChars(String input) {
+        // Create a list of only the alphabetic characters in the input string
+        List<Character> lettersOnly = input.chars()
+                .filter(Character::isLetter)
+                .mapToObj(c -> (char) c)
+                .collect(Collectors.toList());
+
+        // Reverse the alphabetic characters
+        Collections.reverse(lettersOnly);
+        List<Character> reversedLetters = lettersOnly;
+
+        // Initialize a StringBuilder to construct the final result
+        StringBuilder result = new StringBuilder();
+        final int[] index = {0}; // To track the position in the reversed letters string
+
+        // Iterate over the original string and construct the result
+        IntStream.range(0, input.length()).forEach(i -> {
+            if (Character.isLetter(input.charAt(i))) {
+                result.append(reversedLetters.get(index[0]++)); // If the character is a letter, place the reversed letter
+            } else {
+                result.append(input.charAt(i)); // If it's a special character, keep it as is
+            }
+        });
+
+        return result.toString();
+    }
     public static void main(String[] args) {
         String str = "a,b$c";
-        char[] ch= str.toCharArray();
-        List<Character> letters = IntStream.range(0, ch.length)
-                .mapToObj(i->ch[i])
-                .filter(Character :: isLetter)
-                .collect(Collectors.toList());
-        Collections.reverse(letters);
-        //System.out.println(letters);
-        StringBuilder result = new StringBuilder();
-
-        for(char c: ch){
-            if(Character.isLetter((c))){
-                //result.append(letters.removeFirst());
-                System.out.println("letter = "+ result.toString());
-            }else{
-                result.append(c);
-                //System.out.println("special = "+result.toString());
-            }
-        }
-
-        System.out.println(result.toString());
+        System.out.println(reverseWithoutAffectingSpecialChars(str));
+        String input = "Hello, World! 123";
+        System.out.println(reverseWithoutAffectingSpecialChars(input));
     }
 }

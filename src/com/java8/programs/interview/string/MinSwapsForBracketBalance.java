@@ -18,12 +18,10 @@ public class MinSwapsForBracketBalance {
 
         for (char ch : brackets.toCharArray()) {
             if (bracketPairs.containsValue(ch)) {
-                // If it's an opening bracket
-                stack.push(ch);
+                stack.push(ch); // If it's an opening bracket
             } else if (bracketPairs.containsKey(ch)) {
-                // If it's a closing bracket
                 if (!stack.isEmpty() && stack.peek() == bracketPairs.get(ch)) {
-                    stack.pop();
+                    stack.pop(); // If it's a closing bracket
                 }else {
                     mismatches++;
                 }
@@ -45,25 +43,16 @@ public class MinSwapsForBracketBalance {
         String s8 =  "{[({[}]})](";
         String s9 = "{def[abcd(123)xyz]4666}";
 
-        System.out.println("s = "+minimumSwaps(s));
-        System.out.println("=================================");
-        System.out.println("s1 = "+minimumSwaps(s1));
-        System.out.println("=================================");
-        System.out.println("s2 = "+minimumSwaps(s2));
-        System.out.println("=================================");
-        System.out.println("s3 = "+minimumSwaps(s3));
-        System.out.println("=================================");
-        System.out.println("s4 = "+minimumSwaps(s4));
-        System.out.println("=================================");
-        System.out.println("s5 = "+minimumSwaps(s5));
-        System.out.println("=================================");
-        System.out.println("s6 = "+minimumSwaps(s6));
-        System.out.println("=================================");
-        System.out.println("s7 = "+minimumSwaps(s7));
-        System.out.println("=================================");
-        System.out.println("s8 = "+minimumSwaps(s8));
-        System.out.println("=================================");
-        System.out.println("s9 = "+minimumSwaps(s9));
+        System.out.println(s +" : "+minimumSwaps(s));
+        System.out.println(s1 +": "+"s1 = "+minimumSwaps(s1));
+        System.out.println(s2 +": "+"s2 = "+minimumSwaps(s2));
+        System.out.println(s3 +": "+"s3 = "+minimumSwaps(s3));
+        System.out.println(s4 +": "+"s4 = "+minimumSwaps(s4));
+        System.out.println(s5 +": "+"s5 = "+minimumSwaps(s5));
+        System.out.println(s6 +": "+"s6 = "+minimumSwaps(s6));
+        System.out.println(s7 +": "+"s7 = "+minimumSwaps(s7));
+        System.out.println(s8 +": "+"s8 = "+minimumSwaps(s8));
+        System.out.println(s9 +": "+"s9 = "+minimumSwaps(s9));
     }
 }
 /*

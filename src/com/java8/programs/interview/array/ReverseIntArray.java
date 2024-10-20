@@ -23,7 +23,9 @@ public class ReverseIntArray {
                 .toArray();
 
         int[] reverseSort = Arrays.stream(numbers)
-                .boxed().sorted(Collections.reverseOrder()).mapToInt(Integer :: intValue).toArray();
+                .boxed().sorted(Collections.reverseOrder())
+                .mapToInt(Integer :: intValue)
+                .toArray();
 
         System.out.println("Reversed Array: " + Arrays.toString(reversedArray));
         System.out.println("Using IntStream : "+ Arrays.toString(reversed));

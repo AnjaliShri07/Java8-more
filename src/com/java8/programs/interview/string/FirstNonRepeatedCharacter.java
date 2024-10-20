@@ -13,7 +13,7 @@ public class FirstNonRepeatedCharacter {
                 .filter(entry -> entry.getValue() == 1)
                 .map(Map.Entry::getKey)
                 .findFirst()
-                .orElse(null);
+                .orElse('0');
     }
 
     public static Character firstNonRepeatingCharUsingSet(String str){
@@ -21,7 +21,7 @@ public class FirstNonRepeatedCharacter {
                 return str.chars()
                 .mapToObj(c -> (char) c)
                 .filter(set::add)
-                .findFirst().orElse(null);
+                .findFirst().orElse('0');
     }
 
     public static void main(String[] args) {

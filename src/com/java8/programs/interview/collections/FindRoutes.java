@@ -8,6 +8,7 @@ import java.util.*;
         "Delhi"  -> "Goa"*/
 
 public class FindRoutes {
+
     // Find the starting point of the route
     public static String findStartPoint(Map<String, String> cityPairs) {
         // Reverse the map to find the end points
@@ -45,7 +46,7 @@ public class FindRoutes {
         String startPoint = findStartPoint(cityPairs);
         String endPoint = findEndPoint(cityPairs, startPoint);
 
-        System.out.println("Start Point: " + startPoint);
-        System.out.println("End Point: " + endPoint);
+        //System.out.println("Start Point: " + startPoint);
+        //System.out.println("End Point: " + endPoint);
     }
 }
