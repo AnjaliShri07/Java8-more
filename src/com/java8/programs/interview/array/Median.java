@@ -1,8 +1,6 @@
-package com.java8.programs.interview.number;
+package com.java8.programs.interview.array;
 
 import java.util.*;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class Median {
     public static int findMedianStream(List<Integer> arr) {

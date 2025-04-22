@@ -1,0 +1,114 @@
+🔍 Problem Statement
+Given an array height[] where each index represents the height of a bar, compute how much rainwater can be trapped between the bars.
+
+Example input:
+
+int[] height = {3, 0, 1, 0, 4, 0, 2};
+📊 Visually, it looks like this:
+
+
+Index:  0 1 2 3 4 5 6
+Height: 3 0 1 0 4 0 2
+Water gets trapped in dips between taller bars.
+
+✅ Output
+For the input {3, 0, 1, 0, 4, 0, 2},
+the function will return 10 — meaning 10 units of water trapped.
+
+🧠 Core Idea (Two Pointer Approach)
+We move two pointers (left and right) from both ends inward, tracking:
+
+leftMax: highest bar seen so far from the left
+
+rightMax: highest bar seen so far from the right
+
+🚨 At each step:
+Water trapped at a position = min(leftMax, rightMax) - height[i]
+
+But we only compute it where it's safe, by always processing the shorter side first.
+
+🔍 Code Explanation
+public static int trap(int[] height) {
+    if (height == null || height.length == 0) return 0;
+
+    int left = 0, right = height.length - 1;
+    int leftMax = 0, rightMax = 0;
+    int waterTrapped = 0;
+➤ Initialization:
+left, right: pointers at both ends
+
+leftMax, rightMax: track highest seen so far
+
+waterTrapped: accumulates the result
+
+
+    while (left <= right) {
+Loop until pointers meet.
+
+🧭 Inside the loop:
+
+        if (height[left] <= height[right]) {
+We always process the smaller side, because the trapped water depends on the shorter boundary.
+
+🔹 Left side case:
+
+            if (height[left] >= leftMax) {
+                leftMax = height[left];
+            } else {
+                waterTrapped += leftMax - height[left];
+            }
+            left++;
+If current height ≥ leftMax → update leftMax
+
+Else → water is trapped above it = leftMax - height[left]
+
+Move left pointer to the right
+
+🔸 Right side case:
+
+        } else {
+            if (height[right] >= rightMax) {
+                rightMax = height[right];
+            } else {
+                waterTrapped += rightMax - height[right];
+            }
+            right--;
+        }
+Same logic for the right side.
+
+🔚 Finally:
+
+    return waterTrapped;
+}
+Returns total water trapped.
+
+✅ Dry Run Example
+Input: {3, 0, 1, 0, 4, 0, 2}
+
+Water trapped at each index:
+
+index 1 → 3 - 0 = 3
+
+index 2 → 3 - 1 = 2
+
+index 3 → 3 - 0 = 3
+
+index 5 → 4 - 0 = 4
+
+index 6 → not enough height on right side
+
+🧮 Total = 3 + 2 + 3 + 2 = 10
+
+✅ Time & Space Complexity
+
+Metric	Value
+Time	O(n) – one pass
+Space	O(1) – constant space (no extra arrays)
+Efficiency	High
+📌 Summary
+
+Point	Description
+✅ Approach	Two-pointer, space-optimized
+🎯 Handles	All dips and traps
+💡 Core logic	Water is trapped where current height is less than min(leftMax, rightMax)
+👌 Best For	Interview-ready solution, production-grade performance

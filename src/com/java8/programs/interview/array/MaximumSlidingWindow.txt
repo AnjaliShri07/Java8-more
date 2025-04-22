@@ -1,0 +1,61 @@
+Problem -
+You are given an array of integers nums, there is a sliding window of size k which is moving from the very
+left of the array to the very right. You can only see the k numbers in the window. Each time the sliding
+window moves right by one position. Return the max sliding window.
+
+Example 1:
+
+Input: nums = [1,3,-1,-3,5,3,6,7], k = 3
+Output: [3,3,5,5,6,7]
+Explanation:
+Window position                Max
+---------------               -----
+[1  3  -1] -3  5  3  6  7       3
+ 1 [3  -1  -3] 5  3  6  7       3
+ 1  3 [-1  -3  5] 3  6  7       5
+ 1  3  -1 [-3  5  3] 6  7       5
+ 1  3  -1  -3 [5  3  6] 7       6
+ 1  3  -1  -3  5 [3  6  7]      7
+Example 2:
+
+Input: nums = [1], k = 1
+Output: [1]
+
+✅ Problem Summary
+Given an array nums and window size k, move a window of size k across nums and return an array of the maximum values in each window.
+
+🔥 Optimal Approach — Using Deque (O(n) Time)
+💡 Key Idea:
+Use a deque to store indices, not actual values.
+
+Maintain a monotonic decreasing order: elements in the deque are always in descending order of their values
+in nums.The front of the deque always contains the index of the maximum element for the current window.
+
+🧠 How It Works — Step by Step
+Given: nums = [1, 3, -1, -3, 5, 3, 6, 7], k = 3
+
+We slide a window of 3 elements from left to right. The deque stores indices of potentially maximum elements.
+At each step:
+
+Remove out-of-window indices
+Remove smaller elements at the back (they can’t be max in future)
+
+Add current index
+Record max when we hit window size k
+
+✅ Time & Space Complexity
+
+Metric	Value
+Time	O(n)
+Space	O(k)
+📌 Example Trace
+Window: [1, 3, -1]
+Deque stores index of 3 → max = 3
+
+Window: [3, -1, -3]
+Max still = 3
+
+Window: [-1, -3, 5]
+Clean up deque, add 5 → max = 5
+…and so on.
+

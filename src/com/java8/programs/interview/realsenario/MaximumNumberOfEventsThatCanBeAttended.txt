@@ -1,0 +1,52 @@
+Problem -
+You are given an array of events where events[i] = [startDayi, endDayi]. Every event i starts at startDayi and ends at endDayi.
+You can attend an event i at any day d where startTimei <= d <= endTimei. You can only attend one event at any time d.
+Return the maximum number of events you can attend.
+
+Example 1:
+
+Input: events = [[1,2],[2,3],[3,4]]
+Output: 3
+Explanation: You can attend all the three events.
+One way to attend them all is as shown.
+Attend the first event on day 1.
+Attend the second event on day 2.
+Attend the third event on day 3.
+Example 2:
+
+Input: events= [[1,2],[2,3],[3,4],[1,2]]
+Output: 4
+
+✅ Problem Summary
+You can attend at most one event per day. Each event has a [startDay, endDay].
+Your goal is to maximize the number of events you can attend.
+
+🔥 Approach: Greedy + Min Heap
+🧠 Key Ideas:
+Sort events by startDay.
+
+Use a min-heap to keep track of current active events based on endDay.
+
+For each day:
+Add all events that start today to the heap.
+Remove all events that have already ended before today.
+Attend the event that ends earliest (min heap root).
+Repeat until no more events.
+
+✅ Explanation of Example 2
+Input: [[1,2],[2,3],[3,4],[1,2]]
+Sort by start day: [[1,2], [1,2], [2,3], [3,4]]
+
+Day 1 → Attend one of the [1,2] events
+Day 2 → Attend the other [1,2] or [2,3]
+Day 3 → Attend [3,4]
+Day 4 → Nothing left
+Result: 4 events attended ✅
+
+🟢 Time and Space Complexity
+Metric | Complexity
+
+Time | O(N log N)
+Space | O(N)
+
+
