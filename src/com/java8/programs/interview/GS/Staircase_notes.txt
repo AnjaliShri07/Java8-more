@@ -1,0 +1,6 @@
+🛠️ We’ll implement this using three approaches:
+
+Approach	Time Complexity	Space Complexity
+1. Recursive	Exponential O(3ⁿ)	O(n) stack depth
+2. Top-down with Memoization	O(n)	O(n)
+3. Bottom-up Dynamic Programming	O(n)	O(n) or O(1)

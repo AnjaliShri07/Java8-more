@@ -6,8 +6,11 @@ import java.util.stream.Collectors;
 
 public class AnagramGroupReturnInSet {
     public static Set<Set<String>> groupAnagram(String[] str){
-        return Arrays.stream(str).collect(Collectors.groupingBy(AnagramGroupReturnInSet:: sortChar)).values().stream()
-                .map(HashSet:: new).collect(Collectors.toSet());
+        return Arrays.stream(str)
+                .collect(Collectors.groupingBy(AnagramGroupReturnInSet:: sortChar))
+                .values().stream()
+                .map(HashSet:: new)
+                .collect(Collectors.toSet());
     }
 
     private static String sortChar(String str){

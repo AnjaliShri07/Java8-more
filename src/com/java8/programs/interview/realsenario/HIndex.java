@@ -1,4 +1,4 @@
-package com.java8.programs.interview.array;
+package com.java8.programs.interview.realsenario;
 
 import java.util.Arrays;
 

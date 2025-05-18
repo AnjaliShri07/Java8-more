@@ -1,0 +1,22 @@
+TrainMap.TrainMap -
+
+✅ APPROACHES TO SHORTEST PATH IN AN UNWEIGHTED GRAPH
+
+Method	Description	Time Complexity	Space Complexity
+Breadth-First Search (BFS)	Best for unweighted graphs	O(V + E)	O(V)
+Dijkstra's Algorithm	For weighted graphs	O((V + E) log V)	O(V)
+👉 Since your train map has no weights (all paths are equal), BFS is the optimal approach.
+
+🔄 OTHER POSSIBLE APPROACHES
+
+Approach	When to Use
+Dijkstra's	If stations had travel times or weights
+A Search*	If you had heuristics (like geolocation)
+DFS	Not suitable for shortest path (may go deep unnecessarily)
+Would you like:
+
+To see this with weights/travel time (Dijkstra)?
+
+To visualize multiple paths or all possible routes?
+
+To return the number of hops or distance?

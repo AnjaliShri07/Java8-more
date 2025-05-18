@@ -1,0 +1,40 @@
+To find the minimum distance between two words, where the distance is measured from the middle of both words, we need to clarify the concept of "distance from the middle":
+Middle of a word: This means finding the index of the character that is in the middle of the word. For even-length words, we can choose the left middle character.
+Distance between words: This is calculated by finding the index of the middle character of each word and computing the absolute difference between the positions of these middle characters.
+
+Steps to solve:
+Find the middle of each word: You need to compute the middle character of each word.
+Find positions of words in the list: If the words are in an array or list, you will need to find the indices of the two words.
+Calculate the distance: For each pair of words, calculate the distance between the middle characters and keep track of the minimum distance.
+
+Example:
+Given a list of words ["ABC", "XYZ", "LMN", "PQR"], and we are looking for the minimum distance between "ABC" and "XYZ" based on the distance between the middle characters.
+
+Explanation:
+Find the indices of the words:
+We use IntStream.range(0, words.size()) to iterate over the list of words and find the indices of the two words (word1 and word2).
+filter(i -> words.get(i).equals(word1)) helps to filter out the indices where word1 appears, and similarly for word2.
+
+Calculate the middle index:
+The method getMiddleIndex(String word) computes the middle index of a word. If the word length is even, it returns the left middle character index (for example, for "ABCD", it returns 1, which is the left middle).
+
+Calculate the total distance:
+The final distance is the sum of two components:
+The distance between the indices of word1 and word2 in the list (Math.abs(index1.getAsInt() - index2.getAsInt())).
+The distance between the middle character indices of the two words (Math.abs(mid1 - mid2)).
+
+Example Walkthrough:
+For the input list ["ABC", "XYZ", "LMN", "PQR"] and word1 = "ABC", word2 = "XYZ", the steps would go as follows:
+The middle index of "ABC" is 1 (since the middle character is "B" at index 1).
+The middle index of "XYZ" is 1 (since the middle character is "Y" at index 1).
+The indices of "ABC" and "XYZ" in the list are 0 and 1, respectively.
+So, the distance will be:
+Math.abs(0 - 1) + Math.abs(1 - 1) = 1 + 0 = 1.
+
+Output:
+
+Minimum distance between words is: 1
+Time Complexity:
+Finding word indices: O(n), where n is the size of the list (since we're using streams to find the indices).
+Calculating middle indices: O(1) for each word.
+Overall complexity: O(n), which is efficient for this use case.

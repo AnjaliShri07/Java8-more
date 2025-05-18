@@ -1,0 +1,83 @@
+To find the second smallest element in a sorted rotated array using Java 8 Streams, we can first leverage the fact that the array is rotated and sorted. Here's the approach:
+Identify the pivot (smallest element) using binary search, as explained earlier.
+Once we know the smallest element (pivot), we can use streams to find the second smallest element, which will be the next element in the array after the pivot.
+However, since the array is rotated, we need to handle the array properly to find the second smallest element. Here's a streamlined approach to do that using Java 8 streams:
+
+Steps:
+Use binary search to find the pivot (smallest element).
+Create two subarrays: the first part before the pivot and the second part after the pivot.
+Combine both parts, sort them, and use stream operations to find the second smallest element.
+
+Explanation:
+findPivot Method: This method is used to locate the index of the smallest element using binary search in a rotated sorted array.
+If the middle element is smaller than its previous element, it's the pivot.
+Depending on whether the left or right side is sorted, we adjust the search bounds.
+
+Explanation:
+1. int[] combined = new int[n];
+This line creates a new array called combined with a length of n (the same length as the original array arr). This will hold the combined version of the two subarrays (one part before the pivot and one part after it) in their original order.
+
+2. System.arraycopy(arr, pivot, combined, 0, n - pivot);
+This line copies the portion of the array starting from the pivot element (the smallest element) to the end of the array, into the combined array starting at the beginning (index 0).
+arr: the source array (the original rotated array).
+pivot: the index of the smallest element, marking where the array was rotated.
+combined: the destination array (where we want to copy the elements).
+0: the index in the combined array where we start copying the elements.
+n - pivot: the number of elements to copy (from the pivot to the end of the array).
+For example, if arr = {5, 6, 1, 2, 3, 4} and pivot = 2, this line copies {1, 2, 3, 4} into combined starting at index 0.
+So after this line:
+combined will look like: {1, 2, 3, 4, 0, 0} (for n = 6).
+
+3. System.arraycopy(arr, 0, combined, n - pivot, pivot);
+This line copies the portion of the array before the pivot (from the beginning of the array up to the pivot index) into the remaining part of the combined array.
+arr: the source array (the original rotated array).
+0: the index from which to start copying in the original array (arr).
+combined: the destination array (where we want to copy the elements).
+n - pivot: the index in the combined array where we start placing the elements from the beginning of the original array.
+pivot: the number of elements to copy (from the start of the array to the pivot index).
+
+Continuing with our example, if pivot = 2, this line copies the elements {5, 6} from the beginning of arr into the combined array starting from index n - pivot = 6 - 2 = 4.
+So after this line:
+combined will look like: {1, 2, 3, 4, 5, 6}.
+
+Final result:
+After both System.arraycopy calls, the combined array will now contain the elements of the rotated array in the correct sorted order (i.e., the elements after the pivot followed by the elements before the pivot).
+For the input {5, 6, 1, 2, 3, 4} with a pivot at index 2:
+The first System.arraycopy copies {1, 2, 3, 4} into the beginning of combined.
+The second System.arraycopy copies {5, 6} into the end of combined.
+So, the final combined array will be {1, 2, 3, 4, 5, 6}, which is a sorted version of the original rotated array.
+
+findSecondSmallest Method:
+After identifying the pivot (smallest element), we combine the two parts of the array around the pivot.
+We use IntStream.of(combined) to create a stream from the combined array.
+We use distinct() to remove duplicates (if any) and sorted() to sort the stream in ascending order.
+We skip the smallest element (skip(1)) and take the first element of the remaining stream to get the second smallest.
+
+Example:
+For the input array {5, 6, 1, 2, 3, 4}, the output will be:
+
+Second smallest element is: 2
+Why this works:
+The smallest element (1) is found at the pivot index.
+
+The second smallest element (2) is the next element in the sorted order after skipping the smallest element.
+
+Time Complexity:
+Finding the pivot: Binary search takes
+𝑂
+(
+log
+⁡
+𝑛
+)
+O(logn).
+
+Stream operations: Sorting the array and performing stream operations (like distinct, skip, findFirst) takes
+𝑂
+(
+𝑛
+log
+⁡
+𝑛
+)
+O(nlogn) in the worst case.

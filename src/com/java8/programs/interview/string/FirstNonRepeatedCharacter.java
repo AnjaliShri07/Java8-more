@@ -21,7 +21,8 @@ public class FirstNonRepeatedCharacter {
                 return str.chars()
                 .mapToObj(c -> (char) c)
                 .filter(set::add)
-                .findFirst().orElse('0');
+                .findFirst()
+                        .orElse('0');
     }
 
     public static void main(String[] args) {

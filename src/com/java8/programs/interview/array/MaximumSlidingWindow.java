@@ -8,18 +8,24 @@ public class MaximumSlidingWindow {
     public static int[] maxSlidingWindow(int[] nums, int k) {
         if (nums == null || k <= 0) return new int[0];
 
+        //result holds the final sliding window max values.
+        //deque will store indices of nums.
         int n = nums.length;
         int[] result = new int[n - k + 1];
         Deque<Integer> deque = new ArrayDeque<>();
 
         for (int i = 0; i < n; i++) {
-            // Remove indices that are out of the current window
+            // If the front of the deque is outside the current window, remove it.
+            //i - k gives the left boundary of the current window.
             if (!deque.isEmpty() && deque.peekFirst() <= i - k) {
+                System.out.println("deque.peekFirst() ==> "+deque.peekFirst());
+                System.out.println("deque.pollFirst() ==> "+deque.pollFirst());
                 deque.pollFirst();
             }
 
             // Remove indices whose values are less than nums[i]
             while (!deque.isEmpty() && nums[deque.peekLast()] < nums[i]) {
+                System.out.println("deque.pollLast() ==> "+deque.pollLast());
                 deque.pollLast();
             }
 

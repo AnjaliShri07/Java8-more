@@ -1,0 +1,106 @@
+🔧 Structure Overview
+You’re modeling a railway network as an unweighted undirected graph, where:
+Each Station is a Node.
+Connections (tracks) between stations are edges.
+
+🔲 Station class
+
+private static class Station {
+  private String name;
+  private List<Station> neighbours;
+
+  // Constructor
+  public Station(String name) {
+    this.name = name;
+    this.neighbours = new ArrayList<>(3);
+  }
+
+  // Getters and helper methods
+  String getName() { return name; }
+  void addNeighbour(Station v) { this.neighbours.add(v); }
+  List<Station> getNeighbours() { return this.neighbours; }
+
+  @Override
+  public boolean equals(Object obj) { ... }
+  @Override
+  public int hashCode() { ... }
+}
+✅ Purpose:
+Represents a train station, including:
+Its name
+Its connected stations (neighbors)
+Equality by name (important for HashMaps & Sets)
+
+🚆 TrainMap class
+This wraps the network logic:
+
+private HashMap<String, Station> stations;
+You build the graph by:
+
+Adding stations (nodes)
+
+Connecting them (edges)
+
+🎯 Core Method: shortestPath(String from, String to)
+Here’s the detailed BFS implementation with explanation.
+
+1. Initialize BFS
+
+Station start = stations.get(from);
+Station end = stations.get(to);
+You look up the start and end station objects.
+
+
+Map<Station, Station> parentMap = new HashMap<>();
+Set<Station> visited = new HashSet<>();
+Queue<Station> queue = new LinkedList<>();
+We use:
+
+parentMap to remember the previous station (for path reconstruction).
+visited to avoid revisiting stations.
+queue for BFS traversal.
+
+2. Start BFS from start
+
+queue.add(start);
+visited.add(start);
+parentMap.put(start, null);
+3. Traverse the network level-by-level
+
+while (!queue.isEmpty()) {
+  Station current = queue.poll();
+
+  if (current.equals(end)) break;
+Process stations in BFS order. Stop early if destination is found.
+
+
+  for (Station neighbor : current.getNeighbours()) {
+    if (!visited.contains(neighbor)) {
+      visited.add(neighbor);
+      parentMap.put(neighbor, current);
+      queue.add(neighbor);
+    }
+  }
+}
+For each unvisited neighbor, mark it as visited, store its parent, and enqueue it.
+
+🔄 Reconstruct Path (Backtracking)
+After BFS:
+
+List<Station> path = new LinkedList<>();
+Station current = end;
+
+while (current != null) {
+  path.add(0, current); // build path in reverse
+  current = parentMap.get(current);
+}
+Start from the destination.
+Follow parent pointers back to the start.
+Insert each station at the beginning of the path.
+
+
+if (!path.isEmpty() && path.get(0).equals(start)) {
+  return path;
+} else {
+  return Collections.emptyList(); // no path found
+}

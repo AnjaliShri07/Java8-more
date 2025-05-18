@@ -18,7 +18,8 @@ public class AnagramGroupUsingMap {
                             return new String(chars);
                         }
                 ));
-
+        System.out.println(anagramGroups);
+        System.out.println("result ==> ");
         // Print the result
         anagramGroups.values().forEach(System.out::println);
     }

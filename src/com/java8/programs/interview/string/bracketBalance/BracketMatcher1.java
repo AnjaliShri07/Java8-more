@@ -1,4 +1,4 @@
-package com.java8.programs.interview.string;
+package com.java8.programs.interview.string.bracketBalance;
 
 import java.util.*;
 import java.util.Stack;
