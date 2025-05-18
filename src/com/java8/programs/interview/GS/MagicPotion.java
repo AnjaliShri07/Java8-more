@@ -54,25 +54,21 @@ public class MagicPotion {
     }
 
     private static boolean doTestsPass() {
-        // Test case 1: "ABCDABCE"
         if (minimalSteps("ABCDABCE") != 8) {
             System.out.println("Test failed for ABCDABCE");
             return false;
         }
 
-        // Test case 2: "ABCABCE"
         if (minimalSteps("ABCABCE") != 5) {
             System.out.println("Test failed for ABCABCE");
             return false;
         }
 
-        // Test case 3: "ABCDE"
         if (minimalSteps("ABCDE") != 5) {
             System.out.println("Test failed for ABCDE");
             return false;
         }
 
-        // Test case 4: "AABBB"
         if (minimalSteps("AABBB") != 5) {
             System.out.println("Test failed for AABBB");
             return false;
@@ -83,7 +79,6 @@ public class MagicPotion {
 
     public static void main(String[] args) {
         System.out.println("Encoded Potion: " + MagicPotion.minimalSteps("ABCDABCE"));
-        // Run tests
         if (MagicPotion.doTestsPass()) {
             System.out.println("Pass");
         } else {
